@@ -86,7 +86,4 @@ INSERT INTO orders_products (`order_id`,`product_id`) VALUES
 (12,3),
 (12,3),
 (15,3);
-(15,2);
-(16,1);
-(17,2);
-(17,2);
+
