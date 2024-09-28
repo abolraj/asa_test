@@ -19,15 +19,16 @@ CREATE table orders (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     status enum('ordered','delivering','paid','delivered','cancelled'),
-    ordered_at TIMESTAMP NOT NULL
+    ordered_at TIMESTAMP NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 /* orders products table */
 CREATE table orders_products (
     order_id INT NOT NULL,
     product_id INT NOT NULL,
-    FOREGIN KEY(order_id) REFERENCES orders(id),
-    FOREGIN KEY(product_id) REFERENCES product(id)
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
 
