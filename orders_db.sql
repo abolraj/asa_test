@@ -23,3 +23,11 @@ CREATE table orders (
     ordered_at TIMESTAMP NOT NULL
 );
 
+INSERT INTO products (`id`, `name`,`price`,`available_no`) VALUES 
+(1, 'airpod', 12000, 10),
+(2, 'play4', 10000, 10),
+(3, 'redmi12', 12000, 10),
+(4, 'bmw', 72000, 1),
+(5, 'benz', 13000, 13),
+(6, 'banana', 14000, 5),
+(7, 'tomato', 156000, 6);
