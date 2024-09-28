@@ -32,16 +32,22 @@ if(isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST"){
 
     $hashPassword = md5($password);
 
-    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `username` = ? AND `password` = ?");
-    $stmt->bind_param("ss", $username, $password);
+    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `username` = ?");
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $q = $stmt->get_result();
     $user = $q->fetch_assoc();
     if($user){
         // var_dump($user);
-        echo "Welcome Dear. " . $user["name"];
+        if($user["password"] === $hashPassword){
+            // Logined
+            echo "Welcome Dear. " . $user["name"];
+        }else{
+            // Password is incorrect
+            echo "Hey ! The password is incorrect";
+        }
     }else{
-        echo "The credentails do not match !";
+        echo "The username is incorrect !";
     }
 
 
