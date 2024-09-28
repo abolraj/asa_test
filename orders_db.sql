@@ -41,27 +41,27 @@ INSERT INTO products (`id`, `name`,`price`,`available_no`) VALUES
 (6, 'banana', 14000, 5),
 (7, 'tomato', 156000, 6);
 
-INSERT INTO orders (`id`,`status`, `ordered_at`) VALUES
-(1, 'ordered', '2020-10-21 12:30:23'),
-(2, 'ordered', '2020-10-21 12:30:23'),
-(3, null, '2020-10-21 12:30:23'),
-(4, 'delivered', '2020-10-21 12:30:23'),
-(5, 'paid', null),
-(6, 'delivering', '2020-10-21 12:30:23'),
-(7, 'delivering', '2020-10-21 12:30:23'),
-(8, 'delivering', null),
-(9, 'paid', '2020-10-21 12:30:23'),
-(10, 'paid', '2020-10-21 12:30:23'),
-(11, 'delivered', '2020-10-21 12:30:23'),
-(12, 'delivered', null),
-(13, null, '2020-10-21 12:30:23'),
-(14, 'delivered', '2020-10-21 12:30:23'),
-(15, 'cancelled', '2020-10-21 12:30:23'),
-(16, 'cancelled', '2020-10-21 12:30:23'),
-(17, 'cancelled', '2020-10-21 12:30:23'),
-(18, 'cancelled', '2020-10-21 12:30:23'),
-(19, 'cancelled', '2020-10-21 12:30:23'),
-(20, 'cancelled', '2020-10-21 12:30:23');
+INSERT INTO orders (`id`, `user_id`, `status`, `ordered_at`) VALUES
+(1, 1, 'ordered', '2020-10-21 12:30:23'),
+(2, 1, 'ordered', '2020-10-21 12:30:23'),
+(3, 1, null, '2020-10-21 12:30:23'),
+(4, 1, 'delivered', '2020-10-21 12:30:23'),
+(5, 1, 'paid', null),
+(6, 1, 'delivering', '2020-10-21 12:30:23'),
+(7, 1, 'delivering', '2020-10-21 12:30:23'),
+(8, 1, 'delivering', null),
+(9, 1, 'paid', '2020-10-21 12:30:23'),
+(10, 1, 'paid', '2020-10-21 12:30:23'),
+(11, 1, 'delivered', '2020-10-21 12:30:23'),
+(12, 1, 'delivered', null),
+(13, 1, null, '2020-10-21 12:30:23'),
+(14, 1, 'delivered', '2020-10-21 12:30:23'),
+(15, 1, 'cancelled', '2020-10-21 12:30:23'),
+(16, 1, 'cancelled', '2020-10-21 12:30:23'),
+(17, 1, 'cancelled', '2020-10-21 12:30:23'),
+(18, 1, 'cancelled', '2020-10-21 12:30:23'),
+(19, 1, 'cancelled', '2020-10-21 12:30:23'),
+(20, 1, 'cancelled', '2020-10-21 12:30:23');
 
 INSERT INTO orders_products (`order_id`,`product_id`) VALUES 
 (1,2),
