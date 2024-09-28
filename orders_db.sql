@@ -42,7 +42,7 @@ INSERT INTO products (`id`, `name`,`price`,`available_no`) VALUES
 (7, 'tomato', 156000, 6);
 
 INSERT INTO orders (`id`,`status`, `ordered_at`) VALUES
-(1 'ordered', '2020-10-21 12:30:23'),
+(1, 'ordered', '2020-10-21 12:30:23'),
 (2, 'ordered', '2020-10-21 12:30:23'),
 (3, null, '2020-10-21 12:30:23'),
 (4, 'delivered', '2020-10-21 12:30:23'),
