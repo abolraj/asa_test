@@ -87,3 +87,12 @@ INSERT INTO orders_products (`order_id`,`product_id`) VALUES
 (12,3),
 (15,3);
 
+/* Undone orders */
+SELECT * FROM orders WHERE status NOT IN (`paid`,`cancelled`);
+
+/* Null time for status */
+SELECT * FROM orders WHERE ordered_at IS NULL
+
+/* Orders with more than one product */
+SELECT * FROM orders WHERE id IN 
+(SELECT order_id FROM orders_products GROUP BY order_id HAVING count(product_id)>1);
