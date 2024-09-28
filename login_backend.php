@@ -32,7 +32,10 @@ if(isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST"){
 
     $hashPassword = md5($password);
 
-    $q = $conn->query("SELECT * FROM `users` WHERE `username`='$username' AND `password`='$hashPassword'");
+    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `username` = ? AND `password` = ?");
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $q = $stmt->get_result();
     $user = $q->fetch_assoc();
     if($user){
         // var_dump($user);
