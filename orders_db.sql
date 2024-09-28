@@ -27,7 +27,7 @@ CREATE table orders_products (
     order_id INT NOT NULL,
     product_id INT NOT NULL,
     FOREGIN KEY(order_id) REFERENCES orders(id),
-    FOREGIN KEY(product_id) REFERENCES product(id),
+    FOREGIN KEY(product_id) REFERENCES product(id)
 );
 
 
@@ -43,7 +43,7 @@ INSERT INTO products (`id`, `name`,`price`,`available_no`) VALUES
 INSERT INTO orders (`id`,`status`, `ordered_at`) VALUES
 (1 'ordered', '2020-10-21 12:30:23'),
 (2, 'ordered', '2020-10-21 12:30:23'),
-(3, 'ordered', '2020-10-21 12:30:23'),
+(3, null, '2020-10-21 12:30:23'),
 (4, 'delivered', '2020-10-21 12:30:23'),
 (5, 'paid', null),
 (6, 'delivering', '2020-10-21 12:30:23'),
@@ -53,7 +53,7 @@ INSERT INTO orders (`id`,`status`, `ordered_at`) VALUES
 (10, 'paid', '2020-10-21 12:30:23'),
 (11, 'delivered', '2020-10-21 12:30:23'),
 (12, 'delivered', null),
-(13, 'delivered', '2020-10-21 12:30:23'),
+(13, null, '2020-10-21 12:30:23'),
 (14, 'delivered', '2020-10-21 12:30:23'),
 (15, 'cancelled', '2020-10-21 12:30:23'),
 (16, 'cancelled', '2020-10-21 12:30:23'),
@@ -61,3 +61,31 @@ INSERT INTO orders (`id`,`status`, `ordered_at`) VALUES
 (18, 'cancelled', '2020-10-21 12:30:23'),
 (19, 'cancelled', '2020-10-21 12:30:23'),
 (20, 'cancelled', '2020-10-21 12:30:23');
+
+INSERT INTO orders_products (`order_id`,`product_id`) VALUES 
+(1,2),
+(1,3),
+(1,4),
+(2,2),
+(3,5),
+(4,5),
+(5,2),
+(6,6),
+(7,6),
+(7,6),
+(8,2),
+(1,7),
+(1,2),
+(9,7),
+(20,7),
+(10,7),
+(10,2),
+(11,4),
+(12,4),
+(12,3),
+(12,3),
+(15,3);
+(15,2);
+(16,1);
+(17,2);
+(17,2);
