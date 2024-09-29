@@ -32,6 +32,19 @@ CREATE table orders_products (
 );
 
 
+INSERT INTO (`name`,`username`,`password`) VALUES
+('Abolfazl', 'abolfazl', '202cb962ac59075b964b07152d234b70'),
+('Ali', 'ali', '202cb962ac59075b964b07152d234b70'),
+('Abbas', 'abbas', '202cb962ac59075b964b07152d234b70'),
+('Mohammad', 'mohammad', '202cb962ac59075b964b07152d234b70'),
+('Jabbar', 'jabbar', '202cb962ac59075b964b07152d234b70'),
+('Naghi', 'naghi', '202cb962ac59075b964b07152d234b70'),
+('Sina', 'sina', '202cb962ac59075b964b07152d234b70'),
+('Sara', 'sara', '202cb962ac59075b964b07152d234b70'),
+('Saba', 'saba', '202cb962ac59075b964b07152d234b70'),
+('Jam', 'jar', '202cb962ac59075b964b07152d234b70');
+
+
 INSERT INTO products (`id`, `name`,`price`,`available_no`) VALUES 
 (1, 'airpod', 12000, 10),
 (2, 'play4', 10000, 10),
