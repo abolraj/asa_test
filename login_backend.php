@@ -1,27 +1,15 @@
 <?php
 session_start();
 
-// Handle CSRF 
-if(!isset($_SESSION["csrf_token"]))
-    $_SESSION["csrf_token"] = md5(time().$_SERVER["HTTP_USER_AGENT"]);
-
-// Connect to DB
-$conn = mysqli_connect("127.0.0.1:3306", "root", 123456, "asa_db");
-
-if($conn->connect_errno){
-    echo "Error to connect to DB";
-}
-
 // Handle the request from client
-if(isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST"){
+if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Handle CSRF
     $csrf_token = filter_input(INPUT_POST, "csrf_token");
-    if($_SESSION["csrf_token"]!==$csrf_token){
+    if ($_SESSION["csrf_token"] !== $csrf_token) {
         echo "You are not allowed!";
-        header("Location:".$_SERVER["HTTP_REFERER"],true,400);
+        header("Location:" . $_SERVER["HTTP_REFERER"], true, 400);
     }
-
 
     $username = filter_input(INPUT_POST, "username");
     $password = filter_input(INPUT_POST, "password");
@@ -32,25 +20,26 @@ if(isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST"){
 
     $hashPassword = md5($password);
 
-    $stmt = $conn->prepare("SELECT * FROM `users` WHERE `username` = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $q = $stmt->get_result();
-    $user = $q->fetch_assoc();
-    if($user){
-        // var_dump($user);
-        if($user["password"] === $hashPassword){
-            // Logined
-            echo "Welcome Dear. " . $user["name"];
-        }else{
-            // Password is incorrect
-            echo "Hey ! The password is incorrect";
-        }
-    }else{
-        echo "The username is incorrect !";
-    }
+    // Request to users api to login
 
+    $post_data = [
+        "username" => $username,
+        "password" => $hashPassword,
+    ];
+
+    var_dump(request_post("http://127.0.0.1:8008/users", $post_data));
 
     // Comeback to preferer
     // header("Location:".$_SERVER["HTTP_REFERER"]);
+}
+
+function request_post($url, $data)
+{
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+    $response = curl_exec($curl);
+    curl_close($curl);
+
+    return $response;
 }
